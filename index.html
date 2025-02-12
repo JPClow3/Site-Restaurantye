@@ -1,40 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WS playground</title>
-  <link rel="stylesheet" href="/style.css">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Pizza & Burger Mania</title>
+  <link href="styles/styles.css" rel="stylesheet" />
+  <script defer src="src/scripts/app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<header class="logo">
-  <a href="https://www.jetbrains.com/webstorm/">
-    <img src="/webstorm-logo.svg" alt="WebStorm logo" width="344"
-         height="90">
-  </a>
+<header>
+  <nav>
+    <div class="nav-container">
+      <div class="logo"> <!-- Placeholder for Logo -->
+        <a class="logo-link" href="#">P&B Mania</a>
+      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#cardapio" id="cardapioLink">Cardápio</a></li>
+        <li><a href="#pedido">Pedido</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="hero" id="home">
+    <div class="hero-content">
+      <h1>Pizza & Burger Mania</h1>
+      <p>Uma experiência única em sabor e alegria!</p>
+    </div>
+  </div>
 </header>
-<main id="app">
-  <h1 class="title">
-    Thank you for trying it out. <br /> Your first project is up and running
-    now.
-  </h1>
-  <section class="counter">
-    <div class="counter-info">
-      <p class="counter-text">Counter is</p>
-      <p class="counter-value" id="counter-value"></p>
-    </div>
-    <div class="counter-interaction">
-      <button id="increaseByOne" type="button">+1</button>
-      <button id="increaseByTwo" type="button">+2</button>
-      <button id="decreaseByOne" type="button">-1</button>
-      <button id="decreaseByTwo" type="button">-2</button>
-    </div>
+
+<!-- Main Content -->
+<main>
+  <section class="call-to-action" id="call-to-action">
+    <h2>🔥 Saboreie o Mania! 🔥</h2>
+    <p>Descubra nossos sabores irresistíveis e promoções!</p>
+    <button>Ver Cardápio e Pedir Online</button>
+  </section>
+
+  <section class="content-section" id="about">
+    <h2>Sobre Nós</h2>
+    <p>Bem-vindo ao Pizza & Burger Mania! Somos apaixonados por criar experiências gastronômicas únicas, combinando ingredientes frescos e receitas autênticas. Nossa história começou com a vontade de trazer alegria e sabor para sua mesa.  (Add more engaging details about your restaurant here)</p>
+  </section>
+  <section class="content-section" id="pedido">
+    <h2>Pedido Online</h2>
+    <p>Faça seu pedido no conforto da sua casa! Nosso sistema online é rápido, fácil e seguro.  Aproveite nossas entregas ou retire em nosso balcão. (Add specific ordering instructions or links here if needed)</p>
+  </section>
+  <section class="content-section" id="contato">
+    <h2>Contato</h2>
+    <p>Estamos aqui para ajudar! Entre em contato para reservas, dúvidas ou sugestões.  <br>Telefone: (XX) XXXX-XXXX | Email: contato@pizzaburger.com.br  (Replace with actual contact details) <br> Horário de Funcionamento: Seg-Dom: 11h-23h</p> <!-- Added example contact info and hours -->
   </section>
 </main>
-<footer class="technologies">
-  <img src="/technologies.svg" alt="List of supported technologies">
+
+<!-- Modal for Cardápio Flipbook -->
+<div class="modal" id="cardapioModal">
+  <div class="modal-content">
+    <span class="close-button">×</span>
+    <div id="flipbook">
+      <!-- Página 1: Opções principais – Pizza e Burgers -->
+      <div class="page active" id="page1">
+        <div class="option" data-page="page2">
+          <div class="option-content">
+            <img alt="Pizzas" class="option-icon" src="assets/pizza-icon.png">  <!-- Placeholder for pizza icon - add your own in assets folder -->
+            <h2>Pizzas Irresistíveis</h2>
+            <p>Sabores clássicos e especiais com massa artesanal.</p>
+          </div>
+        </div>
+        <div class="option" data-page="page3">
+          <div class="option-content">
+            <img alt="Burgers" class="option-icon" src="assets/burger-icon.png"> <!-- Placeholder for burger icon - add your own in assets folder -->
+            <h2>Burgers Deliciosos</h2>
+            <p>Carnes suculentas e acompanhamentos incríveis.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Página 2: Detalhes das Pizzas -->
+      <div class="page" id="page2">
+        <h2>Nossas Pizzas</h2>
+        <p>Feitas com ingredientes selecionados e a receita da casa.</p>
+        <ul class="menu-list"> <!-- Using a class for menu lists -->
+          <li><strong>Margherita</strong> <span class="price">R$45,00</span> - <em>Molho de tomate, mussarela, manjericão fresco.</em></li> <!-- Added price and description example -->
+          <li><strong>Calabresa</strong> <span class="price">R$50,00</span> - <em>Mussarela, calabresa fatiada, cebola, orégano.</em></li>
+          <li><strong>Portuguesa</strong> <span class="price">R$55,00</span> - <em>Mussarela, presunto, ovos, cebola, azeitonas, ervilha.</em></li>
+          <!-- Add more pizza items here with prices and descriptions -->
+        </ul>
+
+        <!-- Consider adding pizza images here in future enhancements -->
+
+      </div>
+      <!-- Página 3: Detalhes dos Burgers -->
+      <div class="page" id="page3">
+        <h2>Nossos Burgers</h2>
+        <p>Burgers artesanais para todos os gostos.</p>
+        <ul class="menu-list"> <!-- Using a class for menu lists -->
+          <li><strong>Clássico</strong> <span class="price">R$35,00</span> - <em>Pão brioche, burger 180g, queijo cheddar, alface, tomate, molho especial.</em></li>
+          <li><strong>Cheddar Bacon</strong> <span class="price">R$42,00</span> - <em>Pão australiano, burger 180g, cheddar cremoso, bacon crocante, cebola caramelizada.</em></li>
+          <li><strong>Veggie</strong> <span class="price">R$38,00</span> - <em>Pão integral, burger de grão de bico, queijo vegano, rúcula, tomate seco, maionese vegana.</em></li>
+          <!-- Add more burger items here with prices and descriptions -->
+        </ul>
+
+        <!-- Consider adding burger images here in future enhancements -->
+
+      </div>
+
+      <!-- Add more pages as needed (e.g., drinks, desserts) -->
+
+    </div>
+    <div class="controls">
+      <button id="prevBtn">Anterior</button>
+      <button id="nextBtn">Próximo</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <p>© 2023 Pizza & Burger Mania. Todos os direitos reservados.</p>
+    <p>Desenvolvido com ❤ por <a href="#">Joao Paulo</a></p>
+    <!--social media icons or contact info in footer to be added -->
+  </div>
 </footer>
-<script type="module" src="/src/main.js"></script>
 </body>
 </html>

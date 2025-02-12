@@ -1,0 +1,465 @@
+/*  styles.css */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f9f4ef;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+/* Layout Container for Nav */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header & Navigation */
+header {
+  position: relative;
+  background-color: #f9f4ef;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 0;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+  z-index: 1000;
+  background-color: transparent;
+}
+
+nav.scrolled {
+  background-color: rgba(51, 51, 51, 0.95);
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.logo a.logo-link {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo a.logo-link:hover {
+  color: #e6c200;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  color: #ffd700;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.hero {
+  height: 85vh;
+  background: url('assets/images/background.jpeg') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically center content in hero */
+  justify-content: center; /* Center horizontally too */
+  text-align: center; /* Center text within hero-content */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  margin-bottom: 25px;
+}
+
+/* Call-to-Action Section (Moved to be a section within main content) */
+.call-to-action {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 85%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.call-to-action h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 2.2rem;
+}
+
+.call-to-action p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.call-to-action button {
+  background-color: #ffd700;
+  color: #333;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.call-to-action button:hover {
+  background-color: #e6c200;
+  transform: scale(1.05);
+}
+
+/* Content Sections (About, Pedido, Contato) - Consistent styling class */
+.content-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background-color: #ffd700;
+}
+
+section p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Menu List Styling */
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  padding: 10px 0;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 10px;
+}
+
+.menu-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.menu-list strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.menu-list .price {
+  color: #ff6f61;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.menu-list em {
+  font-style: italic;
+  color: #777;
+  display: block;
+  margin-top: 5px;
+}
+
+
+/* Modal do Cardápio (Flipbook) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 95%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Close Button in Modal */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.close-button:hover {
+  opacity: 1;
+  color: #333;
+}
+
+
+/* Flipbook Container */
+#flipbook {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 450px;
+  border: 1px solid #ccc;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Estilos para as páginas do flipbook */
+.page {
+  display: none;
+  padding: 20px 0;
+  height: auto;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Page 1 – Duas opções grandes (Pizza e Burgers) */
+#page1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+#page1 .option {
+  width: calc(50% - 15px);
+  min-width: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 25px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#page1 .option:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+
+.option-icon {
+  width: 80px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+
+#page1 .option h2 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+#page1 .option p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Controle do Flipbook */
+.controls {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.controls button {
+  background-color: #ffd700;
+  color: #333;
+  border: none;
+  padding: 12px 25px;
+  margin: 0 8px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.controls button:hover {
+  background-color: #e6c200;
+  transform: scale(1.03);
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #eee;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #e6c200;
+  text-decoration: underline;
+}
+
+/* Basic Responsiveness
+@media screen and (max-width: 768px) { /* Tablet and smaller */
+  html {
+    font-size: 15px;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav ul li {
+    margin: 10px 0;
+  }
+  #page1 {
+    flex-direction: column;
+  }
+  #page1 .option {
+    width: 90%;
+    min-width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .content-section {
+    padding: 40px 20px;
+  }
+  section h2 {
+    font-size: 2.2rem;
+  }
+}
+
+
+@media screen and (max-width: 480px) { /* Even smaller screens (Phones) */
+  html {
+    font-size: 14px;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .call-to-action {
+    padding: 20px 15px;
+    margin: 15px auto;
+  }
+
+  .content-section {
+    padding: 30px 15px;
+  }
+}
