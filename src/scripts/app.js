@@ -1,95 +1,72 @@
-/* jshint esversion: 6 */
-'use strict';
+// js/main.js
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Modal do Cardápio
-  const cardapioLink = document.getElementById('cardapioLink');
-  const modal = document.getElementById('cardapioModal');
-  const closeButton = document.querySelector('.close-button');
+const { createApp } = Vue;
 
-  cardapioLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.style.display = 'flex';
-  });
-
-  closeButton.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  // Flipbook - navegação entre páginas
-  const pages = document.querySelectorAll('#flipbook .page');
-  let currentPage = 0;
-  const totalPages = pages.length;
-  const pageNumberDisplay = document.createElement('p');
-  pageNumberDisplay.classList.add('page-number-display');
-  const controlsDiv = document.querySelector('.controls');
-
-  if (controlsDiv) {
-    controlsDiv.appendChild(pageNumberDisplay);
-  }
-
-  const showPage = (index) => {
-    pages.forEach((page, i) => {
-      page.classList.toggle('active', i === index);
-    });
-    updatePageNumberDisplay(index + 1, totalPages);
-  };
-
-  const updatePageNumberDisplay = (currentPageNumber, totalPagesNumber) => {
-    pageNumberDisplay.textContent = `Página ${currentPageNumber} de ${totalPagesNumber}`;
-  };
-
-  showPage(currentPage);
-
-  const nextBtn = document.getElementById('nextBtn');
-  const prevBtn = document.getElementById('prevBtn');
-
-  nextBtn.addEventListener('click', () => {
-    if (currentPage < pages.length - 1) {
-      currentPage++;
-      showPage(currentPage);
-    }
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 0) {
-      currentPage--;
-      showPage(currentPage);
-    }
-  });
-
-  const categoryButtons = document.querySelectorAll('#page1 .option');
-  categoryButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const targetPage = button.getAttribute('data-page');
-      const targetIndex = Array.from(pages).findIndex(
-        (p) => p.id === targetPage,
-      );
-      if (targetIndex !== -1) {
-        currentPage = targetIndex;
-        showPage(currentPage);
-      }
-    });
-  });
-
-  const callToActionButton = document.querySelector('.call-to-action button');
-  callToActionButton.addEventListener('click', () => {
-    const cardapioLink = document.getElementById('cardapioLink');
-    cardapioLink.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-});
+createApp({
+  data() {
+    return {
+      // cardapioBoasVindas: 'Bem-vindo! Explore nosso cardápio abaixo:', // Pode remover se não usar mais
+      hamburgers: [
+        // ... (seus hambúrgueres como antes)
+        {
+          id: 1,
+          nome: 'X-Burger Clássico',
+          descricao: 'Pão, carne 100g, queijo mussarela e molho especial.',
+          preco: 18.9,
+          imagem: 'images/xburger.jpg',
+        },
+        {
+          id: 2,
+          nome: 'Duplo Bacon Burger',
+          descricao:
+            'Pão, 2x carne 100g, dobro de bacon, queijo cheddar e molho barbecue.',
+          preco: 25.5,
+          imagem: 'images/duplobacon.jpg',
+        },
+        {
+          id: 3,
+          nome: 'Burger Vegetariano',
+          descricao:
+            'Pão integral, burger de grão de bico, alface, tomate, queijo branco e maionese verde.',
+          preco: 22.0,
+          imagem: 'images/vegetariano.jpg',
+        },
+      ],
+      pizzas: [
+        // ... (suas pizzas como antes)
+        {
+          id: 4,
+          nome: 'Pizza Mussarela',
+          descricao: 'Molho de tomate, queijo mussarela, orégano e azeitonas.',
+          preco: 35.0,
+          imagem: 'images/mussarela.jpg',
+        },
+        {
+          id: 5,
+          nome: 'Pizza Calabresa',
+          descricao:
+            'Molho de tomate, queijo mussarela, calabresa fatiada, cebola e orégano.',
+          preco: 38.0,
+          imagem: 'images/calabresa.jpg',
+        },
+      ],
+      // <<< NOVO: Array para guardar os itens do carrinho >>>
+      carrinho: [],
+    };
+  },
+  methods: {
+    formatarPreco(valor) {
+      return valor.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      });
+    },
+    // <<< NOVO: Método para adicionar itens ao carrinho >>>
+    adicionarAoCarrinho(item) {
+      // Por enquanto, simplesmente adiciona o item ao array
+      // (Mais tarde, poderíamos verificar se já existe e incrementar quantidade)
+      this.carrinho.push(item);
+      console.log('Carrinho atual:', this.carrinho); // Mostra o carrinho no console do navegador
+    },
+  },
+}).mount('#app');
